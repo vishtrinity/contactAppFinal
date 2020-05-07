@@ -1,0 +1,70 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+body{
+    margin:0;
+    padding:0;
+    border:0;
+}
+.wrapper{
+display:grid;
+height:150vh;
+grid-template-rows:0.5fr 3fr 0.75fr;
+grid-template-columns:1fr 2fr 2fr 2fr;
+grid-template-areas: 
+'header header header header'
+'section main main  main'
+'footer footer footer footer';
+}
+
+header{
+    grid-area: header;
+    background-color: rgb(110, 110, 110);
+    color:white;
+    display:grid;
+    justify-content: center;
+    align-content: center;
+}
+
+section{
+    padding:1rem 0.5rem 1rem 0;
+    grid-area:section;
+    background-color:rgb(82, 78, 78);
+    color:white;
+}
+
+main{
+    grid-area: main;
+    background-color:white;
+    color:black;
+}
+footer{
+    grid-area: footer;
+    background-color:black;
+    color:white;
+}
+ul{
+    list-style-type: square;
+}
+section ul li {
+    display:flex;
+    flex-direction: column;
+    
+
+
+}
+section ul li a{
+
+   
+    color:black;
+    font-size: 1rem;
+    font-weight: 600;
+    padding:1rem 0;
+}
+
+section ul li a:hover{
+text-decoration: none;   
+ font-weight: bolder;
+    color:white;
+    
+}

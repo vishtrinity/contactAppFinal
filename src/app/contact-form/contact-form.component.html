@@ -1,0 +1,50 @@
+<div class="container-fluid">
+
+    <form method="POST"[formGroup]="rForm" action="/register" (ngSubmit)="submitData(rForm.value)">{{rForm.value | json}}
+        <div class="form-group">
+            <label for="firstName" class="form-control-plaintext">First Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" formControlName="firstName" [class.is-invalid]="firstName.invalid && firstName.touched" >
+            <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">*Firstname cannot be left empty</small>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName" class="form-control-plaintext">Last Name</label>
+            <input type="text" name="lastName" id="lastName" class="form-control" formControlName="lastName" [class.is-invalid]="lastName.invalid && lastName.touched">
+            <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">*Lastname cannot be left empty</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-control-plaintext">Email</label>
+            <input type="email" name="email" id="email" class="form-control" formControlName="email" [class.is-invalid]="email.invalid && email.touched">
+            <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">*email cannot be left empty and must be in the format abc@xyz.com</small> -->
+            <div *ngIf="email.invalid && email.touched">
+                <small class="text-danger" *ngIf="email.errors?.required">*email cannot be left empty</small>
+                <small class="text-danger" *ngIf="email.errors?.pattern">email must have the pattern abc@xyz.com</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="form-control-plaintext">Phone</label>
+            <input type="tel" name="phone" id="tel" class="form-control" formControlName="phone">
+            <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">*phone number should be 10 digit</small> -->
+<div *ngIf="phone.invalid && phone.touched">
+    <small class="text-danger" *ngIf="phone.errors?.required">*phone number cannot be left empty</small>
+    <small class="text-danger" *ngIf="phone.errors?.minlength">*phone number must be 10 digit long</small>
+    <small class="text-danger" *ngIf="phone.errors.pattern"><br>*phone number must be numeric</small>
+</div>
+        </div>
+
+        <div class="form-group mt-4">
+    >        
+            <input type="checkbox" name="status" id="status" class="form-check-inline" checked  formControlName="status">
+            <label for="status" class="form-check-label">Activated</label>
+            
+        </div>
+
+        <div class="form-group mt-4">
+            <button class="btn btn-success btn-block"type="submit" [class.disabled]="rForm.invalid">submit</button>
+            
+        </div>
+
+    </form>
+</div>
